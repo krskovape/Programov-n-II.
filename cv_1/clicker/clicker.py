@@ -45,6 +45,13 @@ class ClickModel(QObject):
         # Use property as an attribute. Setter is called automatically and
         # notifies the GUI about the changed value.
         self.count = self.count+1
+    
+    @Slot() #Slot musím mít, abych mohla volat z view.gml
+    def reset(self):
+        """Handler for the button click. Vyresetuje to na nulu."""
+        print("Reseting")
+        self.count = 0
+
 
 
 app = QGuiApplication(sys.argv)
@@ -57,7 +64,7 @@ click_model = ClickModel()
 ctxt = view.rootContext()
 # Set that 'click_model' will be available as 'clickModel' property in QML
 # This must be done before view.setSource is called
-ctxt.setContextProperty("clickModel",click_model)
+ctxt.setContextProperty("clickModel",click_model) #click_model bude vidět jako clickModel
 
 view.setSource(url)
 view.show()

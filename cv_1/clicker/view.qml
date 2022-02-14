@@ -12,4 +12,15 @@ Column {
         // Connect the clickModel.increase slot to the onClicked signal
         onClicked: clickModel.increase()
     }
+    Button {
+        text: 'Reset'
+        // Connect the clickModel.increase slot to the onClicked signal
+        onClicked: clickModel.reset()
+    }
+    }
+    Button {
+        text: 'Reset'
+        // Connect the clickModel.increase slot to the onClicked signal
+        onClicked: clickModel.count = 0
+    }
 }
