@@ -4,6 +4,7 @@ import QtQuick.Controls 2.14
 Column {
     Row {
         spacing: 4
+        padding: 5
         Row {
             TextInput {
                 id: degInput
@@ -38,6 +39,7 @@ Column {
             TextInput {
                 id: secInput
                 text: dmsModel.sec
+                maximumLength: 2
                 Binding {
                     target: dmsModel
                     property: "sec"
@@ -56,10 +58,12 @@ Column {
     }
     Row {
         spacing: 4
+        padding: 5
         Row {
             TextInput {
                 id: deg_floatInput
                 text: dmsModel.deg_float
+                maximumLength: 7
                 Binding {
                     target: dmsModel
                     property: "deg_float"
@@ -70,7 +74,7 @@ Column {
                 text: "°"
             }
         }
-        
+
         Button {
             text: 'To DMS'
             onClicked: dmsModel.to_dms()
