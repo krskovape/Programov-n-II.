@@ -22,30 +22,30 @@ def fixUp(heap):
     #dokud nejsem v kořeni
     while idx > 1:
         #podívám se na rodiče, pokud je menší než já, končím
-        rodic = heap[parent(idx)] 
-        if rodic < heap[idx]:
+        idx_parent = parent(idx)
+        if heap[idx_parent] <= heap[idx]:
             return
 
         #podívám se jestli, jsem pravý nebo levý potomek
         if idx%2 == 0:
             idx_chld = idx + 1
             if idx_chld > len(heap)-1: #pokud na začátku přiřadím do levého potomka, pravý neexistuje a idx_chld vyteče z haldy, tak prohodím rovnou
-                swap(heap, parent(idx), idx)
-                idx = parent(idx)
+                swap(heap, idx_parent, idx)
+                idx = idx_parent
                 continue
         else:
             idx_chld = idx - 1
         
         #kouknu, který z potomků je menší a ten prohodím s rodičem
         if heap[idx] <= heap[idx_chld]:
-            swap(heap, parent(idx), idx)
+            swap(heap, idx_parent, idx)
         else: 
-            swap(heap, parent(idx), idx_chld)
+            swap(heap, idx_parent, idx_chld)
         
         #posunu se na pozici rodiče
-        idx = parent(idx)
+        idx = idx_parent
 
-heap = [0, 1, 3, 5, 6, 4, 10, 11, 16, 20, 9]
+heap = [None, 1, 3, 5, 6, 4, 10, 11, 16, 20, 9]
 insert(heap, 2)
 insert(heap, 3)
 print(heap)
